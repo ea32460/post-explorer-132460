@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import PostCard from "./components/PostCard";
 
 function App() {
   const [posts, setPosts] = useState([]);      // ruan postimet
@@ -24,7 +25,10 @@ function App() {
         });
   }, []);
 
+  // Loading
   if (loading) return <p>Loading...</p>;
+
+  // Error
   if (error) return <p>{error}</p>;
 
   return (
@@ -32,11 +36,7 @@ function App() {
         <h1>Post Explorer</h1>
 
         {posts.map((post) => (
-            <div key={post.id}>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-              <p>User: {post.userId}</p>
-            </div>
+            <PostCard key={post.id} post={post} />
         ))}
       </div>
   );
