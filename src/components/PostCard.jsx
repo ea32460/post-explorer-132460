@@ -4,9 +4,10 @@ function PostCard({ post }) {
             <h3>{post.title}</h3>
             <p>{post.body}</p>
             <p>ID: {post.id}</p>
-            <p>User: {post.user}</p>
+            <p>User: {post.userId}</p>
         </div>
     );
 }
 
 export default PostCard;
+
