@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import PostCard from "./components/PostCard";
 
 function App() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [posts, setPosts] = useState([]);      // ruan postimet
+  const [loading, setLoading] = useState(true); // loading state
+  const [error, setError] = useState(null);     // error state
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -33,7 +32,11 @@ function App() {
         <h1>Post Explorer</h1>
 
         {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <div key={post.id}>
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+              <p>User: {post.userId}</p>
+            </div>
         ))}
       </div>
   );
